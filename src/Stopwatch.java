@@ -32,6 +32,7 @@ public class Stopwatch extends JFrame implements ActionListener {
     private int hours;
     private int minutes;
     private int seconds;
+    private int secondsElapsed;
     private long nanoseconds;
     private long start;
     private long elapsed;
@@ -151,6 +152,8 @@ public class Stopwatch extends JFrame implements ActionListener {
             hours = 0;
             minutes = 0;
             seconds = 0;
+            secondsElapsed = 0;
+            start = System.nanoTime();
 
             labelHNum.setText(hours + " h");
             labelMNum.setText(minutes + " m");
@@ -187,7 +190,7 @@ public class Stopwatch extends JFrame implements ActionListener {
         // 1 h 1 m 1 s = 3661 s
         long current = System.nanoTime();
         elapsed = current - start;
-        int secondsElapsed = (int) (elapsed / 1000000000);
+        secondsElapsed = (int) (elapsed / 1000000000);
 
         int currentSeconds = (seconds + (minutes * 60) + (hours * 3600));
 
